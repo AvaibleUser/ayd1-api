@@ -137,7 +137,7 @@ class BusinessConfigurationControllerTest {
                 .map(violation -> violation.getPropertyPath() + ": " + violation.getMessage())
                 .collect(Collectors.joining("; "));
 
-        String expectedMessage = "id: debe ser mayor que 0";
+        String expectedMessage = "id: must be greater than 0";
 
         //Then
         assertEquals(expectedMessage, actualMessage);
