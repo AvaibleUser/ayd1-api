@@ -168,7 +168,16 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.10</version> <!-- Versión estable -->
+                <configuration>
+                    <excludes>
+                        <exclude>com/appointment/management/domain/service/report/DownloadReport*</exclude>
+                        <exclude>com/appointment/management/presentation/controller/UserController*</exclude>
+                        <exclude>com/appointment/management/presentation/mapper/business/UserMapperImpl*</exclude>
+                        <exclude>com/appointment/management/domain/service/auth/TokenService*</exclude>
+                        <exclude>com/appointment/management/application/exception/ValidationExceptionHandler*</exclude>
+                        <exclude>com/appointment/management/application/config/AuthFilter*</exclude>
+                    </excludes>
+                </configuration>
 				<executions>
 					<execution>
 						<id>prepare-agent</id>
@@ -182,16 +191,6 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
-						<configuration>
-							<excludes>
-								<exclude>com/appointment/management/domain/service/report/DownloadReport*</exclude>
-								<exclude>com/appointment/management/presentation/controller/UserController*</exclude>
-								<exclude>com/appointment/management/presentation/mapper/business/UserMapperImpl*</exclude>
-								<exclude>com/appointment/management/domain/service/auth/TokenService*</exclude>
-								<exclude>com/appointment/management/application/exception/ValidationExceptionHandler*</exclude>
-								<exclude>com/appointment/management/application/config/AuthFilter*</exclude>
-							</excludes>
-						</configuration>
 					</execution>
 					<execution>
 						<id>jacoco-check</id>
@@ -206,7 +205,7 @@
 										<limit>
 											<counter>INSTRUCTION</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.10</minimum> <!-- Cobertura mínima de 70% -->
+											<minimum>0.80</minimum> <!-- Cobertura mínima de 70% -->
 										</limit>
 									</limits>
 								</rule>
